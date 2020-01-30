@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppToDo } from 'src/app/todo.state';
+import { Store } from '@ngrx/store';
+import { ModificarEstadoTodosAction } from '../redux/todo.actions';
 
 @Component({
   selector: 'app-todo',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  constructor() { }
+  marcarTodos = false;
+
+  constructor(private store: Store<AppToDo>) { }
 
   ngOnInit() {
+  }
+
+  toggleAll = () => {
+    this.marcarTodos = !this.marcarTodos;
+    const accion = new ModificarEstadoTodosAction(this.marcarTodos);
+    this.store.dispatch( accion );
   }
 
 }

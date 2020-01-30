@@ -1,4 +1,4 @@
 <ul class="todo-list">
-    <app-todo-item></app-todo-item>
+    <app-todo-item [toDo]="toDo" *ngFor="let toDo of toDoList;"></app-todo-item>
     
 </ul>

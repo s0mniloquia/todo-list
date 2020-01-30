@@ -6,6 +6,7 @@ import { TodoFooterComponent } from './todo-footer.component';
 
 @NgModule({
   declarations: [TodoFooterComponent],
+  exports: [TodoFooterComponent],
   imports: [
     CommonModule
   ]
