@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { State, Store } from '@ngrx/store';
 import { AppToDo } from 'src/app/todo.state';
-import { AgregarTareaAction } from '../redux/todo.actions';
+import { AgregarTareaAction } from '../redux/todo/todo.actions';
 
 @Component({
   selector: 'app-todo-add',
@@ -21,7 +21,6 @@ export class TodoAddComponent implements OnInit {
   }
 
   cambioFoco = () => {
-    console.log(this.inputTxt.value);
     const accion = new AgregarTareaAction(this.inputTxt.value);
     this.store.dispatch( accion );
     this.inputTxt.setValue('');

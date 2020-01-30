@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ToDo } from 'src/app/model/todo.model';
 import { FormControl, Validators } from '@angular/forms';
-import { EliminarTareaAction, ModificarTareaAction, ModificarEstadoAction } from '../redux/todo.actions';
 import { AppToDo } from 'src/app/todo.state';
 import { Store } from '@ngrx/store';
+import { ModificarEstadoAction, ModificarTareaAction, EliminarTareaAction } from '../redux/todo/todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -34,6 +34,7 @@ export class TodoItemComponent implements OnInit {
     this.editarInput = true;
     setTimeout(() => this.inputEditing.nativeElement.select(), 0);
   }
+  
   deshabilitarEdicion = () => {
     this.editarInput = false;
     if (this.inputTxtEdit.valid) {

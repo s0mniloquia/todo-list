@@ -1,21 +1,17 @@
-import {
-    actions, AGREGAR_TODO, MODIFICAR_TODO,
-    ELIMINAR_TODO, MODIFICAR_ESTADO, MODIFICAR_ESTADO_TODOS,
-    ELIMINAR_TODO_COMPLETADOS
-} from './todo.actions';
-import { ToDo } from '../../model/todo.model';
+import * as actions from './todo.actions';
+import { ToDo } from '../../../model/todo.model';
 
 const estadoInicial: ToDo[] = [];
 
 
-export function reducerToDo(state: ToDo[] = estadoInicial, action: actions): ToDo[] {
+export function reducerToDo(state: ToDo[] = estadoInicial, action: actions.actions): ToDo[] {
     switch (action.type) {
-        case AGREGAR_TODO:
+        case actions.AGREGAR_TODO:
             const toDo: ToDo = new ToDo(action.payload.texto);
             // Clonamos el array de tareas con spread(ES6) y añadimos una nueva tarea
             return [...state, toDo];
 
-        case MODIFICAR_TODO:
+        case actions.MODIFICAR_TODO:
             return state.map(element => {
                 if (element.id === action.payload.id) {
                     return { ...element, texto: action.payload.texto };
@@ -23,7 +19,7 @@ export function reducerToDo(state: ToDo[] = estadoInicial, action: actions): ToD
                     return { ...element };
                 }
             });
-        case MODIFICAR_ESTADO:
+        case actions.MODIFICAR_ESTADO:
             return state.map(element => {
                 if (element.id === action.payload.id) {
                     return { ...element, completada: !element.completada };
@@ -31,14 +27,14 @@ export function reducerToDo(state: ToDo[] = estadoInicial, action: actions): ToD
                     return { ...element };
                 }
             });
-        case MODIFICAR_ESTADO_TODOS:
+        case actions.MODIFICAR_ESTADO_TODOS:
             return state.map(element => {
                 return { ...element, completada: action.payload.estado };
             });
-        case ELIMINAR_TODO:
+        case actions.ELIMINAR_TODO:
             return state.filter(element => element.id !== action.payload.id);
 
-        case ELIMINAR_TODO_COMPLETADOS:
+        case actions.ELIMINAR_TODO_COMPLETADOS:
             return state.filter(element => !element.completada);
 
         default:

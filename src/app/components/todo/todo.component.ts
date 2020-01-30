@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppToDo } from 'src/app/todo.state';
 import { Store } from '@ngrx/store';
-import { ModificarEstadoTodosAction } from '../redux/todo.actions';
+import { ModificarEstadoTodosAction } from '../redux/todo/todo.actions';
 
 @Component({
   selector: 'app-todo',
