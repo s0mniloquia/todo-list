@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "todo-list",
+    "description": "Una extension construida con Angular",
+    "version": "1.0",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "index.html"
+    },
+    "content_security_policy": "script-src 'self'; object-src 'self'",
+    "web_accessible_resources": [
+        "assets/css/*",
+        "assets/js/*",
+        "assets/fonts/*"
+    ]
+}
